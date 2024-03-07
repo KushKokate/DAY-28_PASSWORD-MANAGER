@@ -9,10 +9,14 @@ def save_password():
     website = entry_website.get()
     email = entry_email.get()
     password = entry_password.get()
-    messagebox.showinfo(title = "Welcome to Password Manager", message = "Are you sure you want to save ?")
-    with open("data.txt", "a") as f:
-        f.write(f"{website} | {email} | {password}\n")
-    clear_fields()
+    if len(website) == 0 or len(email) == 0 or len(password) == 0:
+        messagebox.showerror("Error!", "Please enter all the fields")
+    else:
+        is_ok = messagebox.askyesno(title = "Welcome to Password Manager", message = f"Are you sure you want to save \n {website} \n {password}")
+        if is_ok:
+            with open("data.txt", "a") as f:
+                f.write(f"{website} | {email} | {password}\n")
+            clear_fields()
 
 def clear_fields():
     entry_website.delete(0, 'end')
