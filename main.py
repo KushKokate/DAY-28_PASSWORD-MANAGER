@@ -26,6 +26,9 @@ def generate_password():
     entry_password.insert(0, password)
     pyperclip.copy(password)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+# This function saves the password in a file called data.txt
+# does a little bit of error handling like showing a pop-up message if the text fields are empty
+# Also pop's up a notification if we want to save the password and username in case we don't want to....
 def save_password():
     website = entry_website.get()
     email = entry_email.get()
@@ -84,20 +87,12 @@ button.grid(row=3, column=2)
 button_add = Button(window, text="Add", width=35, command=save_password)
 button_add.grid(row=4, column=1, columnspan=2)
 
+# Canvas for adding the photo of a locker which is saved in logo.png
+
 canvas = Canvas(width=200, height=200)
 lock_img = PhotoImage(file = "logo.png")
 canvas.create_image(100, 100, image=lock_img)
 canvas.grid(row=0, column = 1)
-
-
-
-
-
-
-
-
-
-
 
 
 
